@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bg {
+  background: linear-gradient(to right, #aacfd0 0%, #aacfd0 65%, white 65%);
+}
+
+@media screen and (max-width: 768px) {
+  .bg {
+    background: #aacfd0;
+  }
+}
+.text-hover {
+  @apply relative after:absolute after:left-0 after:ease-linear after:duration-300 after:top-0 after:border-b-2 after:h-full after:w-0 group-hover:after:w-full;
+}
