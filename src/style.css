@@ -11,6 +11,11 @@
     background: #aacfd0;
   }
 }
+
+img {
+  content-visibility: auto;
+}
+
 .text-hover {
   @apply relative after:absolute after:left-0 after:ease-linear after:duration-300 after:top-0 after:border-b-2 after:h-full after:w-0 group-hover:after:w-full;
 }

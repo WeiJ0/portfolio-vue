@@ -8,7 +8,7 @@
           <About />
           <Skill />
           <Experience />
-          <Project />
+          <Project :isShow="show" />
 
           <aside class="hidden md:block fixed top-1/4 right-0 w-1/5">
             <span class="text-xl text-primary mr-2">{{ currentPage }}</span>/
@@ -24,7 +24,6 @@
           </aside>
         </div>
       </main>
-      <div ref="intersection"></div>
     </div>
   </transition>
 </template>
@@ -55,8 +54,8 @@ export default {
     return {
       show: false,
       currentPage: 1,
-      totalPage: 5,
-      blockList: ['關於我', '技能簡述', '工作經驗', '專案', '接案作品']
+      totalPage: 6,
+      blockList: ['關於我', '技能簡述', '工作經驗', '專案', '練習作品', '接案作品']
     }
   },
   methods: {

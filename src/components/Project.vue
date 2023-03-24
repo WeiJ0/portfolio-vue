@@ -4,11 +4,30 @@
         <section class="my-12 px-5 flex flex-col">
             <div class="flex flex-col lg:flex-row items-center mb-8 group" v-for="workItem in works" :key="workItem.name">
                 <div class="w-full md:w-2/3 lg:w-1/3">
-                    <img class="mb-2" :src="'/works/' + workItem.img" :alt="workItem.name">
+                    <img class="mb-2" :src="imgSrc('works', workItem.img)" :alt="workItem.name">
                 </div>
                 <div class="lg:w-2/3 px-4 lg:p-10">
-                    <h3 class="my-4 text-primary font-bold text-xl mb-3"> {{
-                        workItem.name }}</h3>
+                    <a :href="workItem.url">
+                        <h3 class="my-4 text-primary font-bold text-xl mb-3"> {{
+                            workItem.name }}</h3>
+                    </a>
+                    <p class="text-hover after:border-black">{{ workItem.description }}</p>
+                </div>
+            </div>
+        </section>
+
+        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">練習作品</h2>
+        <section class="my-12 px-5 flex flex-col">
+            <div class="flex flex-col lg:flex-row items-center mb-8 group" v-for="workItem in practise"
+                :key="workItem.name">
+                <div class="w-full md:w-2/3 lg:w-1/3">
+                    <img class="mb-2" :src="imgSrc('practise', workItem.img)" :alt="workItem.name">
+                </div>
+                <div class="lg:w-2/3 px-4 lg:p-10">
+                    <a :href="workItem.url">
+                        <h3 class="my-4 text-primary font-bold text-xl mb-3"> {{
+                            workItem.name }}</h3>
+                    </a>
                     <p class="text-hover after:border-black">{{ workItem.description }}</p>
                 </div>
             </div>
@@ -16,16 +35,18 @@
 
         <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">接案作品</h2>
         <section class="mb-12 px-5 md:pb-80 xl:pb-96">
-            <Carousel :autoplay="2000" :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500">
-                <Slide v-for="(caseItem, index) in cases" :key="index">
-                    <div class="carousel__item">
-                        <img class="mb-2" :src="'/projects/' + caseItem.img" :alt="caseItem.name">
-                        <a class="my-4 text-primary text-xl pb-1 border-b border-primary" :href="caseItem.url"> {{
-                            caseItem.name }}</a>
-                    </div>
-                </Slide>
-                <Pagination />
-            </Carousel>
+            <template v-if="isShow">
+                <Carousel :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500">
+                    <Slide v-for="(caseItem, index) in cases" :key="index">
+                        <div class="carousel__item">
+                            <img class="mb-2" :src="imgSrc('projects', caseItem.img)" :alt="caseItem.name">
+                            <a class="my-4 text-primary text-xl pb-1 border-b border-primary" :href="caseItem.url"> {{
+                                caseItem.name }}</a>
+                        </div>
+                    </Slide>
+                    <Pagination />
+                </Carousel>
+            </template>
         </section>
     </div>
 </template>
@@ -33,9 +54,13 @@
 <script>
 import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
+const base = import.meta.env.BASE_URL;
 
 export default {
     name: 'Project',
+    props: {
+        isShow: Boolean
+    },
     components: {
         Carousel,
         Slide,
@@ -43,6 +68,7 @@ export default {
     },
     data() {
         return {
+            baseUrl: base,
             works: [
                 {
                     name: "義大遊樂世界官網改版",
@@ -58,6 +84,32 @@ export default {
                     name: "義大 Easy 購 2.0",
                     description: "透過 web app 的方式打造行動會員卡概念，可即時得知消費紀錄、點數紀錄、兌換贈品、使用電子抵用券等功能，讓顧客能更方便使用。APP 使用 Cordova 包裝 Web，後端使用 ASP.NET C# 建置",
                     img: "mall_app.jpg"
+                }
+            ],
+            practise: [
+                {
+                    name: "高雄旅遊網",
+                    url: "https://weij0.github.io/React-Kaohsiung-Travel/",
+                    img: "kaohsiung.jpg",
+                    description: "使用 Create-React-App 建置，並使用 React-Router 做路由管理，串接高雄市政府 Open API 顯示景點資訊。"
+                },
+                {
+                    name: "程式外包媒合平台",
+                    url: "https://wecoding-weij0.vercel.app/",
+                    img: "wecoding.jpg",
+                    description: "使用 Next.js 建置，後端嘗試使用 Express 串接 Supabase 做資料庫建立 API，最後部屬於 Vercel。"
+                },
+                {
+                    name: "2022 TheF2E Week1 - 滾動視差練習",
+                    url: "https://weij0.github.io/2022_TheF2E_Week1/",
+                    img: "parallax.jpg",
+                    description: "使用 React 建置，配合 GSAP 的 ScrollTrigger 做滾動視差效果。"
+                },
+                {
+                    name: "Line 聊天紀錄分析",
+                    url: "https://weij0.github.io/line-chat-analyzer/",
+                    img: "line.jpg",
+                    description: "使用 Vue 及 Vite 建置，UI 框架使用 Tailwind CSS，使用 File API 讀取使用者上傳的聊天紀錄檔案，並透過 JavaScript 處理資料，最後顯示於頁面上。"
                 }
             ],
             cases: [
@@ -116,6 +168,11 @@ export default {
                 }
             },
         }
+    },
+    methods: {
+        imgSrc(path, img) {
+            return `${this.baseUrl}${path}/${img}`;
+        }
     }
 }
 </script>
@@ -161,5 +218,4 @@ export default {
         opacity: 1;
         transform: rotateY(0) scale(1.1);
     }
-}
-</style>
+}</style>
