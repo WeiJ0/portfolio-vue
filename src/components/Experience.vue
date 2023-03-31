@@ -2,14 +2,14 @@
     <div class="md:w-3/5 mt-10">
         <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">工作經驗</h2>
     </div>
-    <div class="md:w-3/5 mr-auto px-10 md:px-0 lg:px-10">
+    <div class="md:w-3/5 mr-auto px-6 md:px-0 lg:px-10">
         <section class="py-3 mb-5 md:mb-0 lg:px-8 tracking-wider">
             <ul>
                 <li v-for="work in works" class="rounded-lg border-2 border-primary p-4 lg:p-8 my-4">
                     <h3 class="p-2 rounded-md inline-block text-xl font-bold text-primary">
                         {{ work.title }} [{{ work.role }}] {{ work.time }}
                     </h3>
-                    <ul class="mt-5 mx-3 px-8 lg:px-10 list-disc">
+                    <ul class="mt-5 mx-3 px-4 lg:px-10 list-disc">
                         <li class="group my-2" v-for="item in work.description">
                             <span class="text-hover after:border-black">{{ item }}</span>
                         </li>

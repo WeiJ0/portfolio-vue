@@ -24,7 +24,7 @@
                     <img class="mb-2" :src="imgSrc('practise', workItem.img)" :alt="workItem.name">
                 </div>
                 <div class="lg:w-2/3 px-4 lg:p-10">
-                    <a :href="workItem.url">
+                    <a :href="workItem.url" @click="gtagTrack(workItem)">
                         <h3 class="my-4 text-primary font-bold text-xl mb-3"> {{
                             workItem.name }}</h3>
                     </a>
@@ -40,7 +40,7 @@
                     <Slide v-for="(caseItem, index) in cases" :key="index">
                         <div class="carousel__item">
                             <img class="mb-2" :src="imgSrc('projects', caseItem.img)" :alt="caseItem.name">
-                            <a class="my-4 text-primary text-xl pb-1 border-b border-primary" :href="caseItem.url"> {{
+                            <a class="my-4 text-primary text-xl pb-1 border-b border-primary" @click="gtagTrack(caseItem)" :href="caseItem.url"> {{
                                 caseItem.name }}</a>
                         </div>
                     </Slide>
@@ -172,6 +172,13 @@ export default {
     methods: {
         imgSrc(path, img) {
             return `${this.baseUrl}${path}/${img}`;
+        },
+        gtagTrack(obj){
+            this.$gtag.event('view', {
+                event_category: '點擊作品',
+                event_label: obj.name,
+                value: obj.url
+            });
         }
     }
 }

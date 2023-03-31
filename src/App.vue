@@ -3,7 +3,7 @@
   <transition>
     <div class="flex h-full min-h-screen w-full scroll-smooth" v-show="show">
       <main class="main w-full bg">
-        <div class="container mx-auto">
+        <div class="container mx-auto 2xl:px-16 min-[1920px]:px-0">
           <Intro />
           <About />
           <Skill />
