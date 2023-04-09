@@ -8,8 +8,9 @@
           <About />
           <Skill />
           <Experience />
+          <Blog />
           <Project :isShow="show" />
-
+          
           <aside class="hidden md:block fixed top-1/4 right-0 w-1/5">
             <span class="text-xl text-primary mr-2">{{ currentPage }}</span>/
             <span class="text-xl  ml-2">{{ totalPage }}</span>
@@ -35,6 +36,7 @@ import Skill from './components/Skill.vue'
 import Experience from './components/Experience.vue'
 import Project from './components/Project.vue'
 import Media from './components/Media.vue'
+import Blog from './components/Blog.vue'
 
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -48,14 +50,15 @@ export default {
     Skill,
     Experience,
     Project,
-    Media
+    Media,
+    Blog
   },
   data() {
     return {
       show: false,
       currentPage: 1,
       totalPage: 6,
-      blockList: ['關於我', '技能簡述', '工作經驗', '專案', '練習作品', '接案作品']
+      blockList: ['關於我', '技能簡述', '工作經驗', '部落格', '專案', '練習作品', '接案作品']
     }
   },
   methods: {
