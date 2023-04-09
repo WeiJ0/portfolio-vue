@@ -73,89 +73,89 @@ export default {
                 {
                     name: "義大遊樂世界官網改版",
                     description: "原網站為 10 年前建置，還使用 Table 作為排版無 RWD 功能。此次導入客製化 Bootstrap 5 當作 UI 框架實現 RWD 功能，並串接 Facebook、Instagram API 顯示於頁面上。並埋入 GA 分析並使用 Google Looker Studio 製作數據報表予企劃相關單位",
-                    img: "tp.jpg"
+                    img: "tp.webp"
                 },
                 {
                     name: "專櫃直接銷售平台",
                     description: "原賣場僅有實體銷售門市，為協助提高顧客忠誠及滿意度，開發專櫃直接銷售平台，串接聯合信用卡中心金流服務，讓專櫃人員可以產生訂單直接透過通訊軟體或簡訊提供給顧客進行線上刷卡，再透過宅配或門市取件方式，額外提升公司收入。(因需要內部帳號密碼不方便提供)",
-                    img: "mall_sale.jpg"
+                    img: "mall_sale.webp"
                 },
                 {
                     name: "義大 Easy 購 2.0",
                     description: "透過 web app 的方式打造行動會員卡概念，可即時得知消費紀錄、點數紀錄、兌換贈品、使用電子抵用券等功能，讓顧客能更方便使用。APP 使用 Cordova 包裝 Web，後端使用 ASP.NET C# 建置",
-                    img: "mall_app.jpg"
+                    img: "mall_app.webp"
                 }
             ],
             practise: [
                 {
                     name: "高雄旅遊網",
                     url: "https://weij0.github.io/React-Kaohsiung-Travel/",
-                    img: "kaohsiung.jpg",
+                    img: "kaohsiung.webp",
                     description: "使用 Create-React-App 建置，並使用 React-Router 做路由管理，串接高雄市政府 Open API 顯示景點資訊。"
                 },
                 {
                     name: "程式外包媒合平台",
                     url: "https://wecoding-weij0.vercel.app/",
-                    img: "wecoding.jpg",
+                    img: "wecoding.webp",
                     description: "使用 Next.js 建置，後端嘗試使用 Express 串接 Supabase 做資料庫建立 API，最後部屬於 Vercel。"
                 },
                 {
                     name: "2022 TheF2E Week1 - 滾動視差練習",
                     url: "https://weij0.github.io/2022_TheF2E_Week1/",
-                    img: "parallax.jpg",
+                    img: "parallax.webp",
                     description: "使用 React 建置，配合 GSAP 的 ScrollTrigger 做滾動視差效果。"
                 },
                 {
                     name: "Line 聊天紀錄分析",
                     url: "https://weij0.github.io/line-chat-analyzer/",
-                    img: "line.jpg",
+                    img: "line.webp",
                     description: "使用 Vue 及 Vite 建置，UI 框架使用 Tailwind CSS，使用 File API 讀取使用者上傳的聊天紀錄檔案，並透過 JavaScript 處理資料，最後顯示於頁面上。"
                 }
             ],
             cases: [
                 {
                     name: "文為科技",
-                    img: "buildrome.jpg",
+                    img: "buildrome.webp",
                     url: "https://buildrome.com/",
                 },
                 {
                     name: "花幻想",
-                    img: "flowerfantasy.jpg",
+                    img: "flowerfantasy.webp",
                     url: "https://www.flowerfantasy.com.tw/"
                 },
                 {
                     name: "眷戀高雄",
-                    img: "lovetakao.jpg",
+                    img: "lovetakao.webp",
                     url: "https://lovetakao.com.tw/",
                 },
                 {
                     name: "塑眉專科",
-                    img: "smsenka.jpg",
+                    img: "smsenka.webp",
                     url: "https://smsenka.com/"
                 },
                 {
                     name: "白膠膠鮮耳飲",
-                    img: "richsnow.jpg",
+                    img: "richsnow.webp",
                     url: "https://www.richsnow.com.tw/"
                 },
                 {
                     name: "慶賢客棧",
-                    img: "chingshian.jpg",
+                    img: "chingshian.webp",
                     url: "https://www.chingshian.com.tw/"
                 },
                 {
                     name: "恆申有限公司",
-                    img: "henshen.jpg",
+                    img: "henshen.webp",
                     url: "https://hen-shen.tw/"
                 },
                 {
                     name: "金禾宇",
-                    img: "khdr.jpg",
+                    img: "khdr.webp",
                     url: "https://khdr.kingholly.com.tw/"
                 },
                 {
                     name: "韓大夫診所",
-                    img: "drhanclinic.jpg",
+                    img: "drhanclinic.webp",
                     url: "https://www.drhanclinic.com.tw/"
                 }
             ],

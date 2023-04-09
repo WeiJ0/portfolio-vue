@@ -5,7 +5,7 @@
             <section class="bg-secondary rounded-xl shadow-primary shadow-md md:float-right py-5 px-6 md:ml-5">
                 <ul class="list-none">
                     <li>
-                        <img src="/photo/avatar.jpg" alt="avatar" class="rounded-full w-32 h-32 mx-auto">
+                        <img src="/photo/avatar.webp" alt="avatar" class="rounded-full w-32 h-32 mx-auto">
                     </li>
                     <li class="flex flex-col border-b-2 p-2 border-primary group" v-for="(item, key, index) in contactInfo">
                         <span class="text-primary font-bold">{{ key }}</span>
