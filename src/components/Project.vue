@@ -36,12 +36,14 @@
         <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">接案作品</h2>
         <section class="mb-12 px-5 md:pb-80 xl:pb-96">
             <template v-if="isShow">
-                <Carousel :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500">
+                <Carousel ref="carousel" :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500"
+                    @wheel.prevent="onWheel">
                     <Slide v-for="(caseItem, index) in cases" :key="index">
                         <div class="carousel__item">
                             <img class="mb-2" :src="imgSrc('projects', caseItem.img)" :alt="caseItem.name">
-                            <a class="my-4 text-primary text-xl pb-1 border-b border-primary" @click="gtagTrack(caseItem)" :href="caseItem.url"> {{
-                                caseItem.name }}</a>
+                            <a class="my-4 text-primary text-xl pb-1 border-b border-primary" @click="gtagTrack(caseItem)"
+                                :href="caseItem.url"> {{
+                                    caseItem.name }}</a>
                         </div>
                     </Slide>
                     <Pagination />
@@ -167,18 +169,33 @@ export default {
                     itemsToShow: 3.5,
                 }
             },
+            wheelDebounce: false,
         }
     },
     methods: {
         imgSrc(path, img) {
             return `${this.baseUrl}${path}/${img}`;
         },
-        gtagTrack(obj){
+        gtagTrack(obj) {
             this.$gtag.event('view', {
                 event_category: '點擊作品',
                 event_label: obj.name,
                 value: obj.url
             });
+        },
+        onWheel(e) {
+            if (this.wheelDebounce) return;
+
+            if (e.deltaY > 0)
+                this.$refs.carousel.next();
+            else
+                this.$refs.carousel.prev();
+
+            this.wheelDebounce = true;
+
+            setTimeout(() => {
+                this.wheelDebounce = false;
+            }, 500);
         }
     }
 }
