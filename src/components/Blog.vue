@@ -1,17 +1,18 @@
 <template>
     <div class="md:w-3/5 mt-10">
-        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">部落格</h2>
+        <h2 ref="title" class="title">部落格</h2>
     </div>
     <div class="md:w-3/5 mr-auto mb-4 px-6 md:px-0 lg:px-10">
         <section class="py-3 mb-5 md:mb-0 lg:px-8 tracking-wider">
             <ul>
-                <li v-for="item in posts" class="rounded-lg p-4 my-4 group">
+                <li v-for="item in posts" class="rounded-lg p-4 my-2 group">
                     <a :href="item.link" target="_blank">
-                        <h3 class="text-lg inline-block font-bold text-primary text-hover after:border-primary">
+                        <h3 class="post-title text-hover">
                             <span class="text-md">{{ item.pubDate }} - </span>
                             {{ item.title }}
-                        </h3><br/>
-                        <span class="text-sm text-gray-600">{{ item.description }}</span>
+                        </h3>
+                        <br />
+                        <span class="post-description">{{ item.description }}</span>
                     </a>
                 </li>
             </ul>
@@ -87,7 +88,7 @@ export default {
             const posts = vm.content.item;
             posts.forEach(post => {
                 post.pubDate = new Date(post.pubDate).toLocaleDateString();
-                
+
                 if (post.description.length > 45)
                     post.description = post.description.substring(0, 45) + '...';
 
@@ -98,3 +99,12 @@ export default {
     }
 }
 </script>
+
+<style>
+    .post-title{
+        @apply text-lg inline-block font-bold text-primary after:border-primary        
+    }
+    .post-description {
+        @apply text-sm text-gray-600
+    }
+</style>

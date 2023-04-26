@@ -5,24 +5,12 @@
       <main class="main w-full bg">
         <div class="container mx-auto 2xl:px-16 min-[1920px]:px-0">
           <Intro />
-          <About />
-          <Skill />
-          <Experience />
-          <Blog />
-          <Project :isShow="show" />
-          
-          <aside class="hidden md:block fixed top-1/4 right-0 w-1/5">
-            <span class="text-xl text-primary mr-2">{{ currentPage }}</span>/
-            <span class="text-xl  ml-2">{{ totalPage }}</span>
-            <ul class="mt-10">
-              <li class="my-5 font-bold duration-300 ease-linear text-lg cursor-pointer hover:text-primary" :class="{
-                'text-black': currentPage !== index + 1,
-                'text-primary': currentPage === index + 1
-              }" v-for="(item, index) in blockList" @click="scrollTo(index)">
-                {{ item }}</li>
-            </ul>
-            <Media />
-          </aside>
+          <About ref="about" />
+          <Skill ref="skill" />
+          <Experience ref="experience" />
+          <Blog ref="blog" />
+          <Project :isShow="show" ref="project" />
+          <Aside :currentPage="currentPage" :blockList="blockList" @scroll-to="scrollTo" />
         </div>
       </main>
     </div>
@@ -30,12 +18,12 @@
 </template>
 
 <script>
+import Aside from './components/Aside.vue'
 import Intro from './components/Intro.vue'
 import About from './components/About.vue'
 import Skill from './components/Skill.vue'
 import Experience from './components/Experience.vue'
 import Project from './components/Project.vue'
-import Media from './components/Media.vue'
 import Blog from './components/Blog.vue'
 
 import { gsap } from "gsap";
@@ -45,28 +33,26 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 export default {
   name: 'App',
   components: {
+    Aside,
     About,
     Intro,
     Skill,
     Experience,
-    Project,
-    Media,
+    Project,    
     Blog
   },
   data() {
     return {
       show: false,
       currentPage: 1,
-      totalPage: 6,
-      blockList: ['關於我', '技能簡述', '工作經驗', '部落格', '專案', '練習作品', '接案作品']
+      blockList: []
     }
   },
   methods: {
-    scrollTo(index) {
-      const blockElement = document.querySelectorAll('.title')[index];
+    scrollTo(element) {
       gsap.to(window, {
         duration: 1, scrollTo: {
-          y: blockElement,
+          y: element,
           offsetY: 100,
         }, ease: "power2.out"
       });
@@ -75,9 +61,7 @@ export default {
       gsap.registerPlugin(ScrollTrigger);
       gsap.registerPlugin(ScrollToPlugin);
 
-      const blockElements = document.querySelectorAll('.title');
-
-      blockElements.forEach((item, index) => {
+      this.blockList.forEach((item, index) => {
         ScrollTrigger.create({
           trigger: item, // 觸發物件
           once: false,
@@ -91,15 +75,31 @@ export default {
           },
         });
       });
+    },
+    asideInit() {
+      let items = [];
+      let refs = [];
+      Object.keys(this.$refs).forEach(item => {
+        refs.push(this.$refs[item].$refs);
+      })
+      refs.forEach(item => {
+        for (let key in item) {
+          if (key.includes('title')) {
+            items.push(item[key]);
+          }
+        }
+      });
+      this.blockList = items;
     }
   },
   mounted() {
     setTimeout(() => {
       this.show = true;
-      setTimeout(() => {
+      this.$nextTick(() => {
+        this.asideInit();
         this.scrollInit();
-      }, 500);
-    }, 1000);
+      });
+    }, 500);
   }
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
     <div class="md:w-3/5 mt-20">
-        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">技能簡述</h2>
+        <h2 ref="title" class="title">技能簡述</h2>
         <section class="flex flex-col">
             <div class="w-full flex flex-col md:flex-row items-center" v-for="skill in skills">
-                <div class="p-3 md:w-1/4 text-xl text-center font-bold rounded-md bg-primary text-quaternary">{{ skill.name }}
+                <div class="skill-name">{{ skill.name }}
                 </div>
                 <ul class="p-3 md:pl-8 md:w-3/4">
                     <li class="my-1 group" v-for="item in skill.content">
@@ -69,3 +69,9 @@ export default {
     }
 }
 </script>
+
+<style>
+    .skill-name{
+        @apply p-3 md:w-1/4 text-xl text-center font-bold rounded-md bg-primary text-quaternary
+    }
+</style>

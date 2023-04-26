@@ -1,6 +1,6 @@
 <template>
     <div class="md:w-10/12">
-        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">專案</h2>
+        <h2 ref="title[0]" class="title">專案</h2>
         <section class="my-12 px-5 flex flex-col">
             <div class="flex flex-col lg:flex-row items-center mb-8 group" v-for="workItem in works" :key="workItem.name">
                 <div class="w-full md:w-2/3 lg:w-1/3">
@@ -16,7 +16,7 @@
             </div>
         </section>
 
-        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">練習作品</h2>
+        <h2 ref="title[1]" class="title">練習作品</h2>
         <section class="my-12 px-5 flex flex-col">
             <div class="flex flex-col lg:flex-row items-center mb-8 group" v-for="workItem in practise"
                 :key="workItem.name">
@@ -33,7 +33,7 @@
             </div>
         </section>
 
-        <h2 class="title text-3xl text-center md:text-left text-primary font-bold mb-5">接案作品</h2>
+        <h2 ref="title[2]" class="title">接案作品</h2>
         <section class="mb-12 px-5 md:pb-80 xl:pb-96">
             <template v-if="isShow">
                 <Carousel ref="carousel" :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500"
@@ -185,19 +185,14 @@ export default {
         },
         onWheel(e) {
             if (this.wheelDebounce) return;
-
-            if (e.deltaY > 0)
-                this.$refs.carousel.next();
-            else
-                this.$refs.carousel.prev();
-
+            (e.deltaY > 0) ? this.$refs.carousel.next() : this.$refs.carousel.prev();
             this.wheelDebounce = true;
 
             setTimeout(() => {
                 this.wheelDebounce = false;
             }, 500);
         }
-    }
+    },
 }
 </script>
 
@@ -242,4 +237,5 @@ export default {
         opacity: 1;
         transform: rotateY(0) scale(1.1);
     }
-}</style>
+}
+</style>
