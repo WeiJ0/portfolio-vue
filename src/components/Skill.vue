@@ -29,8 +29,8 @@ export default {
                         '熟悉 Bootstrap4、5框架，客製進行開發',
                         '能夠使用 Tailwind CSS 框架',
                         '能夠使用 SCSS 預處理器進行開發',
-                        '初步了解 SEO 搜尋引擎優化、結構化資料',
-                        '有使用過 Google Analytics、Google Tag Manager、Google Search Console 工具',
+                        '了解 SEO 搜尋引擎優化、結構化資料',
+                        '使用過 Google Analytics、Google Tag Manager、Google Search Console',
                     ]
                 },
                 {

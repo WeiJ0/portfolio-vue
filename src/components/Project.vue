@@ -33,7 +33,7 @@
             </div>
         </section>
 
-        <h2 ref="title[2]" class="title">接案作品</h2>
+        <!-- <h2 ref="title[2]" class="title">接案作品</h2>
         <section class="mb-12 px-5 md:pb-80 xl:pb-96">
             <template v-if="isShow">
                 <Carousel ref="carousel" :itemsToShow="3" :wrapAround="true" :breakpoints="breakpoints" :transition="500"
@@ -49,7 +49,7 @@
                     <Pagination />
                 </Carousel>
             </template>
-        </section>
+        </section> -->
     </div>
 </template>
 
@@ -90,16 +90,10 @@ export default {
             ],
             practise: [
                 {
-                    name: "高雄旅遊網",
-                    url: "https://weij0.github.io/React-Kaohsiung-Travel/",
-                    img: "kaohsiung.webp",
-                    description: "使用 Create-React-App 建置，並使用 React-Router 做路由管理，串接高雄市政府 Open API 顯示景點資訊。"
-                },
-                {
-                    name: "程式外包媒合平台",
-                    url: "https://wecoding-weij0.vercel.app/",
-                    img: "wecoding.webp",
-                    description: "使用 Next.js 建置，後端嘗試使用 Express 串接 Supabase 做資料庫建立 API，最後部屬於 Vercel。"
+                    name: "2023 TheF2e Wee1 - 立委競選官網",
+                    url: "https://weij0.github.io/2023F2E-Week1/",
+                    img: "2023f2ecover.jpg",
+                    description: "使用 SCSS 開發，使用 lenis 呈現絲滑效果，並套用 google app script 串接 google sheet 作為後台資料庫。"
                 },
                 {
                     name: "2022 TheF2E Week1 - 滾動視差練習",
@@ -112,6 +106,12 @@ export default {
                     url: "https://weij0.github.io/line-chat-analyzer/",
                     img: "line.webp",
                     description: "使用 Vue 及 Vite 建置，UI 框架使用 Tailwind CSS，使用 File API 讀取使用者上傳的聊天紀錄檔案，並透過 JavaScript 處理資料，最後顯示於頁面上。"
+                },
+                {
+                    name: "高雄旅遊網",
+                    url: "https://weij0.github.io/React-Kaohsiung-Travel/",
+                    img: "kaohsiung.webp",
+                    description: "使用 Create-React-App 建置，並使用 React-Router 做路由管理，串接高雄市政府 Open API 顯示景點資訊。"
                 }
             ],
             cases: [
